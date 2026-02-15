@@ -1,5 +1,5 @@
 const express = require('express');
-const { GoogleGenerativeAI } = require('@google/genai');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 require('dotenv').config();
 
 const app = express();
@@ -20,6 +20,7 @@ app.post('/analisar', async (req, res) => {
     ]);
     res.json({ explicacao: result.response.text() });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ error: "Erro ao consultar o Mestre" });
   }
 });
